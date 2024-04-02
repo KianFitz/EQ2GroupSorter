@@ -11,9 +11,11 @@
       <button class="button-4" onclick="saveToFile()">Save</button>
       <button class="button-4" onclick="loadFromFile()">Load</button>
       <button class="button-4" onclick="reset()">Clear</button>
+      <button class="button-4" onclick="unassignall()">Unassign All</button>
+      <button class="button-4" onclick="copyToClipboard()">Send to Discord</button>
     </div>
 
-    <div class="container">
+    <div class="container" id="container">
         <div class="raid-frame">
             <div class="separator">Group 1</div>
             <div class="group-frame" id="group1">
@@ -39,50 +41,53 @@
           <div id="unassigned" class="group-frame unassigned">
 
           </div>
+        </div>
       </div>
-    </div>
       <div class="add-new-container">
-          <input class="form__input" type="text" id="characterName" placeholder="Character Name..."/>
-          <select id="class">
-              <option>------- CLASS -------</option>
-              <option>------- FIGHTERS -------</option>
-              <option>Berserker</option>
-              <option>Guardian</option>
-              <option>Monk</option>
-              <option>Bruiser</option>
-              <option>Paladin</option>
-              <option>Shadowknight</option>
-              <option>------- PRIESTS -------</option>
-              <option>Templar</option>
-              <option>Inquisitor</option>
-              <option>Warden</option>
-              <option>Fury</option>
-              <option>Channeler</option>
-              <option>Defiler</option>
-              <option>Mystic</option>
-              <option>------- MAGES -------</option>
-              <option>Wizard</option>
-              <option>Warlock</option>
-              <option>Illusionist</option>
-              <option>Coercer</option>
-              <option>Conjuror</option>
-              <option>Necromancer</option>
-              <option>------- SCOUTS -------</option>
-              <option>Swashbuckler</option>
-              <option>Brigand</option>
-              <option>Dirge</option>
-              <option>Troubador</option>
-              <option>Beastlord</option>
-              <option>Assassin</option>
-              <option>Ranger</option>
+        <input class="form__input" type="text" id="characterName" placeholder="Character Name..."/>
+        <select id="class">
+            <option>------- CLASS -------</option>
+            <option>------- FIGHTERS -------</option>
+            <option>Berserker</option>
+            <option>Guardian</option>
+            <option>Monk</option>
+            <option>Bruiser</option>
+            <option>Paladin</option>
+            <option>Shadowknight</option>
+            <option>------- PRIESTS -------</option>
+            <option>Templar</option>
+            <option>Inquisitor</option>
+            <option>Warden</option>
+            <option>Fury</option>
+            <option>Channeler</option>
+            <option>Defiler</option>
+            <option>Mystic</option>
+            <option>------- MAGES -------</option>
+            <option>Wizard</option>
+            <option>Warlock</option>
+            <option>Illusionist</option>
+            <option>Coercer</option>
+            <option>Conjuror</option>
+            <option>Necromancer</option>
+            <option>------- SCOUTS -------</option>
+            <option>Swashbuckler</option>
+            <option>Brigand</option>
+            <option>Dirge</option>
+            <option>Troubador</option>
+            <option>Beastlord</option>
+            <option>Assassin</option>
+            <option>Ranger</option>
 
-          </select>
-          <button class="button-4" id="addnew">Submit</button>
-          <div id="delete">
-            <img src="bin.png" height="40px" width="40px" style="margin-top: 5px;">
-          </div>
+        </select>
+        <button class="button-4" id="addnew">Submit</button>
+        <div id="delete">
+          <img src="bin.png" height="40px" width="40px" style="margin-top: 5px;">
+        </div>
+  </div>
     </div>
+      
 
   </body>
   <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="html2canvas.js"></script>
 </html>

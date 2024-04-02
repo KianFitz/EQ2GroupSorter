@@ -5,10 +5,12 @@ body {
 .container {
     width: 800px;
     display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(20, 19, 19);
 }
 
 .add-new-container {
-    margin-top: 20px;
+    margin-top: 180px;
     display: flex;
     align-items: center;
     gap: 10px;

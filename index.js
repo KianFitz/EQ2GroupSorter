@@ -1,3 +1,5 @@
+var html2canvas;
+
 const items = document.querySelectorAll("div.group-item");
 const containers = document.querySelectorAll("div.group-frame");
 
@@ -202,6 +204,73 @@ function loadFromFile() {
     }
 
     isDirty = false;
+}
+
+async function sendImageToDiscordWebhook(imageBlob, webhookURL) {
+    // Create a FormData object
+    const formData = new FormData();
+    // Append the image blob to the FormData object
+    formData.append('file', imageBlob, 'image.png');
+  
+    try {
+      // Send a POST request to the Discord webhook URL
+      const response = await fetch(webhookURL, {
+        method: 'POST',
+        body: formData
+      });
+  
+      if (!response.ok) {
+        // If the response is not OK (status code not in the 200 range), throw an error
+        throw new Error(`Failed to send image to Discord webhook: ${response.status} - ${response.statusText}`);
+      }
+  
+      // Log success message
+      console.log('Image sent successfully to Discord webhook!');
+    } catch (error) {
+      // Log and handle any errors that occur during the request
+      console.error('Error sending image to Discord webhook:', error.message);
+    }
+  }
+  
+
+function copyToClipboard() {
+    html2canvas(document.getElementById("container")).then(canvas => {
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL();
+        img.id = "temp";
+
+        img.addEventListener('load', async () => {
+            try {
+                const response = await fetch(img.src);
+                const blob = await response.blob();
+
+                var webhookUrl = "https://discord.com/api/webhooks/1224748591684391065/lvP1jKahudFGUJFnqIIAEQwo9dfQuPUrsos2hmEIiepezl-pP9CIf8_nmXajtBxawbrp";
+
+                sendImageToDiscordWebhook(blob, webhookUrl);
+
+            }                
+            catch (e){
+                    console.log(e);
+            }
+        });
+    });
+}
+
+function unassignall() {
+    document.querySelectorAll('div.group-frame').forEach((group) => {
+        const id = group.id;
+        const unassigned = document.getElementById("unassigned");
+
+        if (id != null && id != "unassigned") {
+            [...group.children].forEach((item) => {
+                unassigned.appendChild(item);
+            });
+        }
+    });
+}
+
+function unassign() {
+
 }
 
 function dragStart(event) {
