@@ -144,6 +144,16 @@ function deleteDrop() {
 }
 
 function saveToFile() {
+
+    groupSetup = {
+        group1: [],
+        group2: [],
+        group3: [],
+        group4: [],
+        bench: [],
+        unassigned: []
+    }
+
     document.querySelectorAll('.group-frame').forEach((group) => {
         const id = group.id;
 
